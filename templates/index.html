@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text Summarization Tool</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.3/css/bulma.min.css">
+</head>
+<body>
+    <section class="section">
+        <div class="container">
+            <h1 class="title">Text Summarization Tool</h1>
+            <form method="POST" action="/summarize">
+                <div class="field">
+                    <label class="label">Input Text</label>
+                    <div class="control">
+                        <textarea class="textarea" name="input_text" rows="8" placeholder="Paste long article here..."></textarea>
+                    </div>
+                </div>
+
+                <div class="field">
+                    <label class="label">Minimum Length of Summary</label>
+                    <div class="control">
+                        <input class="input" type="number" name="min_length" value="50">
+                    </div>
+                </div>
+
+                <div class="field">
+                    <label class="label">Maximum Length of Summary</label>
+                    <div class="control">
+                        <input class="input" type="number" name="max_length" value="200">
+                    </div>
+                </div>
+
+                <div class="control">
+                    <button class="button is-primary" type="submit">Summarize</button>
+                </div>
+            </form>
+
+            {% if summary %}
+            <section class="section">
+                <h2 class="title">Summary</h2>
+                <div class="box">
+                    {{ summary }}
+                </div>
+            </section>
+            {% endif %}
+        </div>
+    </section>
+</body>
+</html>
